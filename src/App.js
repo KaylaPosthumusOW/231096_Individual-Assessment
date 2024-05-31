@@ -7,6 +7,7 @@ import ComfyBeds from "./pages/beds";
 import PopularToys from "./pages/toys";
 import Adopt from "./pages/adopt";
 import AddPetAdoption from "./pages/AddPetAdoption";
+import ToyDetails from "./components/itemDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/browse/*" element ={<BrowsePage />} />
           <Route index element={<PopularToys />} />
           <Route path="/toys" element={<PopularToys />} />
+          <Route path="/toys/:id" component={<ToyDetails />} />
           <Route path="/beds" element={<ComfyBeds />} />
         <Route path="/adopt" element ={<Adopt />} />
         <Route path="/addAdoption" element ={<AddPetAdoption />} />

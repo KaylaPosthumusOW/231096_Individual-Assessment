@@ -1,48 +1,71 @@
-import { useEffect, useState } from "react";
+// src/components/PopularToys.jsx
+import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ItemCards from "../components/itemCard";
-
+import { getAllToys } from "../services/getPurrfectPetsData";
+import { updateToyById } from "../services/updatePurrfectPetsData";
+import { deleteToyById } from "../services/deletePurrfectPetsData"
 
 function PopularToys() {
   const [toys, setToys] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchToys = async () => {
-      try {
-        const response = await fetch("/api/toys");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log("Fetched toys:", data); // Add this line
+    getAllToys()
+      .then((data) => {
         setToys(data);
-      } catch (error) {
-        console.error("Error fetching toys:", error);
-      }
-    };
-
-    fetchToys();
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
   }, []);
+
+  const handleUpdateToy = (id, updatedToy) => {
+    updateToyById(id, updatedToy)
+      .then((data) => {
+        console.log("Toy updated successfully:", data);
+        const updatedToys = toys.map((toy) => (toy._id === id ? data : toy));
+        setToys(updatedToys);
+      })
+      .catch((error) => console.error("Error updating toy:", error));
+  };
+
+  const handleDeleteToy = (id) => {
+    deleteToyById(id)
+      .then(() => {
+        console.log("Toy deleted successfully:", id);
+        const updatedToys = toys.filter((toy) => toy._id !== id);
+        setToys(updatedToys);
+      })
+      .catch((error) => console.error("Error deleting toy:", error));
+  };
 
   return (
     <div className="homepage-bg">
       <div className="container">
-        <h1 className="my-4">Popular Toys</h1>
+        <h1 className="my-4" style={{ color: "#4A3A28" }}>
+          Popular Toys
+        </h1>
+        {error && <div className="alert alert-danger">{error}</div>}
         <Row>
           {toys.length > 0 ? (
             toys.map((toy) => (
               <Col xs={12} md={6} lg={3} key={toy._id} className="mb-4">
                 <ItemCards
+                  id={toy._id}
                   name={toy.name}
                   description={toy.description}
                   price={toy.price}
                   image={toy.image}
+                  onUpdate={handleUpdateToy}
+                  onDelete={() => handleDeleteToy(toy._id)}
                 />
               </Col>
             ))
           ) : (
-            <div className="w-full flex flex-col justify-center items-center mt-12">
+            <div>
               <h4 className="font-body mb-2">No toys available.</h4>
             </div>
           )}

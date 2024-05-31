@@ -3,36 +3,46 @@ import NavBar from "../components/NavBar";
 import Form from "react-bootstrap/Form";
 import PrimaryBtn from "../components/PrimaryBtn";
 import "../styles/AddAdoption.css";
-import axios from "axios";
+import { addNewAdoption } from "../services/createPurrfectPetsData";
 
 function AddPetAdoption() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [breed, setBreed] = useState("");
-  const [gender, setGender] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [newAdopt, setNewAdopt] = useState({
+    name: "",
+    age: "",
+    breed: "",
+    description: "",
+    image: "",
+  });
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [message, setMessage] = useState(""); // Define 'message' state variable
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    setNewAdopt({
+      ...newAdopt,
+      [e.target.id]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/adopt/addAdoption', {
-        name,
-        age,
-        breed,
-        gender,
-        description,
-        image,
+      await addNewAdoption(newAdopt);
+      setMessage("Dog added to adoption list successfully!");
+      setError(null);
+      // Reset form fields after successful submission
+      setNewAdopt({
+        name: "",
+        age: "",
+        breed: "",
+        description: "",
+        image: "",
       });
-      setSuccess(true);
-      setMessage('Adoption Added Successfully!');
-    } catch (error) {
-      setError('Error adding Adoption');
+    } catch (err) {
+      console.error("Error adding dog to adoption list:", err);
+      setError("Error adding dog to adoption list. Please try again.");
+      setMessage("");
     }
-  }
+  };
 
   return (
     <div style={{ backgroundColor: "#97461B", height: "100vh" }}>
@@ -41,44 +51,43 @@ function AddPetAdoption() {
         <h2 className="mb-3" style={{ color: "#4A3A28" }}>
           Add Dog's Information
         </h2>
-        {/* Dog Name */}
-        <Form.Group controlId="dogName">
+        <Form.Group controlId="name">
           <Form.Label>Dog Name</Form.Label>
           <Form.Control
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={newAdopt.name}
+            onChange={handleChange}
+            required
           />
         </Form.Group>
-        {/* Dog Age */}
-        <Form.Group controlId="dogAge">
+        <Form.Group controlId="age">
           <Form.Label>Dog Age</Form.Label>
           <Form.Control
             type="text"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
+            value={newAdopt.age}
+            onChange={handleChange}
+            required
           />
         </Form.Group>
-        {/* Dog Breed */}
-        <Form.Group controlId="dogBreed">
+        <Form.Group controlId="breed">
           <Form.Label>Dog Breed</Form.Label>
           <Form.Control
             type="text"
-            value={breed}
-            onChange={(e) => setBreed(e.target.value)}
+            value={newAdopt.breed}
+            onChange={handleChange}
+            required
           />
         </Form.Group>
-        {/* Dog Gender */}
-        <Form.Group controlId="dogGender">
+        <Form.Group controlId="gender">
           <Form.Label>Dog Gender</Form.Label>
           <Form.Control
             type="text"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
+            value={newAdopt.gender}
+            onChange={handleChange}
+            required
           />
         </Form.Group>
-        {/* Description */}
-        <Form.Group controlId="dogDescription">
+        <Form.Group controlId="description">
           <Form.Label>
             Description: Brief description of the dog's personality,
             temperament, and any special needs
@@ -86,28 +95,26 @@ function AddPetAdoption() {
           <Form.Control
             as="textarea"
             rows={3}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={newAdopt.description}
+            onChange={handleChange}
+            required
           />
         </Form.Group>
-        {/* Image URL */}
-        <Form.Group controlId="dogImage">
+        <Form.Group controlId="image">
           <Form.Label>Image URL</Form.Label>
           <Form.Control
-            type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            type="url"
+            value={newAdopt.image}
+            onChange={handleChange}
+            required
           />
         </Form.Group>
-        {error && <div className="text-danger mb-3">{error}</div>}
-        {success && (
-          <div className="text-success mb-3">Adoption added successfully.</div>
-        )}
         <div className="submit-btn">
           <PrimaryBtn label="Add Dog To Adoption List" type="submit" />
         </div>
+        {message && <p className="text-success">{message}</p>}
+        {error && <p className="text-danger">{error}</p>}
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 }

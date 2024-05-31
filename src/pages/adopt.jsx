@@ -1,9 +1,28 @@
 import SecondaryBtn from "../components/SecondaryBtn"
 import NavBar from "../components/NavBar";
-import ItemCards from "../components/itemCard";
 import { Link } from "react-router-dom";
+import AdoptCard from "../components/adoptCard";
+import { useEffect, useState } from "react";
+import { getAllAdoptions } from "../services/getPurrfectPetsData";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function Adopt() {
+    const [adopt, setAdopts] = useState([]);
+    const [defaultAllAdopts, setDefaultAllAdopts] = useState([])
+
+    useEffect(() => {
+        getAllAdoptions()
+        .then((data) => {
+            setAdopts(data);
+            setDefaultAllAdopts(data);
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }, []);
+
+
     return (
       <div className="homepage-bg">
         <NavBar />
@@ -24,21 +43,27 @@ function Adopt() {
             <h2 className="mt-5">Our Pets Ready for Adoption</h2>
             <p style={{width: "73%", marginTop: "20px"}}>Below, you'll find some of the adorable dogs currently available for adoption. Each one has a unique personality and story, ready to enrich your life with love and companionship. Take your time to browse through their profiles and get to know them better.</p>
         </div>
-          
-        <div className="row">
-            <div className="col-3">
-                <ItemCards />
+        
+        <Row>
+          {adopt.length > 0 ? (
+            adopt.map((adopt) => (
+              <Col xs={12} md={6} lg={3} key={adopt._id} className="mb-4">
+                <AdoptCard
+                  id={adopt._id}  // Pass the id prop here
+                  name={adopt.name}
+                  age={adopt.age}
+                  breed={adopt.breed}
+                  description={adopt.description}
+                  image={adopt.image}
+                />
+              </Col>
+            ))
+          ) : (
+            <div>
+              <h4 className="font-body mb-2">No toys available.</h4>
             </div>
-            <div className="col-3">
-                <ItemCards />
-            </div>
-            <div className="col-3">
-                <ItemCards />
-            </div>
-            <div className="col-3">
-                <ItemCards />
-            </div>
-        </div>
+          )}
+        </Row>
 
         </div>
       </div>

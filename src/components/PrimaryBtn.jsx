@@ -1,20 +1,21 @@
-// Primary Filled Button
+import React from 'react';
 import Button from "react-bootstrap/Button";
-import "../styles/Buttons.css"
+import "../styles/Buttons.css";
 
 function PrimaryBtn(props) {
+  const { type, label, onClick } = props; // Destructuring props
+
   return (
-    <Button
-      onClick={props.onClick}
-      className={`Primary-button`}
+    <Button 
+      type={type}
+      onClick={onClick}
+      className="Primary-button" // Removed unnecessary string interpolation
       style={{
         backgroundColor: "#97461B",
-        border: "#97461B",
-        marginLeft: "45%",
-        marginTop: "10px"
+        border: "2px solid #97461B",
       }}
     >
-      {props.label}
+      {label}
     </Button>
   );
 }

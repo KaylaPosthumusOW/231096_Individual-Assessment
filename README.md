@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+![PurrfectPetsHomepage](./src/assets/Hero-img.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my individual Assessment where I was tasked to create a full-stack web application using the MERN stack (MongoDB, Express, React, Node.js) that performs CRUD (Create, Read, Update, Delete) operations. 
 
-## Available Scripts
+[Watch the demo »]()
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+* [About the Project](#about-the-project)
+   * [Home](#home)
+   * [Browse Plants](#browse-plants)
+* [Getting Started](#getting-started)
+  * [Installing](#installing)
+* [Built With](#built-with)
+* [Contributing](#contributing)
+* [Authors](#authors)
+* [License](#license)
+* [Acknowledgements](#acknowledgements)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About The Project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Purrfect Pets is a platform where the admin can update and delete toys and also add a pet to the Adoption list.
 
-### `npm test`
+### Home
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![EvergreenLogo](./src/assets/Hero-img.png)
 
-### `npm run build`
+### Browse Items
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![EvergreenLogo](./src/assets/Browsepage.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Adoption Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![EvergreenLogo](./src/assets/Adoptionpage.png)
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repo
+```sh
+git clone https://github.com/paulowi/DV100-T3-Class-Project-Test
+```
+2. Open the project
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Use `Open Workspace` in Visual Studio.
 
-## Learn More
+3. Open Terminal
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Click terminal and click New Terminal
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Navigate to the backend
 
-### Code Splitting
+cd backend
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Add another terminal
 
-### Analyzing the Bundle Size
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Built With
 
-### Making a Progressive Web App
+* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [jQuery](https://jquery.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [MongoDB](https://cloud.mongodb.com/v2/6657606a3c03272fbfe2e304#/metrics/replicaSet/665760a629f2e157a4ed6cc5/explorer/PurrfectPets/toys/find)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Authors
 
-### Deployment
+* **Kayla Posthumus** - *HTML, CSS, Javascript* - [KaylaPosthumus](https://github.com/KaylaPosthumusOW)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acknowledgements
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* Wolf Botha 

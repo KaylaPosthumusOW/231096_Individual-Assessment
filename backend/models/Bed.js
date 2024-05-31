@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const toySchema = new mongoose.Schema({
+const bedSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -19,4 +19,5 @@ const toySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Toy', toySchema);
+module.exports = mongoose.model('Bed', bedSchema);
+

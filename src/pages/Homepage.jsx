@@ -14,9 +14,9 @@ function Homepage() {
             <h1 className="heading">Purrrfect</h1>
             <h1 className="heading-2">Pets</h1>
             <p className="text">At Purrrfect Pets, we believe that pets are more than just animals—they're family. Our mission is to provide you with everything you need to keep your furry, feathered, or finned friends happy and healthy.</p>
-            <PrimaryBtn label="Browse" />
+            
         </div>
-            <div className="rectangle"></div>
+            <div className="rectangle" style={{marginTop: "40px"}}></div>
         <div className="container details">
             <h1 style={{color: "transparent"}}>Here's How it Works</h1>
         </div>
