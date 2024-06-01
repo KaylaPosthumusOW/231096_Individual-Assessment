@@ -2,7 +2,10 @@
 
 This is my individual Assessment where I was tasked to create a full-stack web application using the MERN stack (MongoDB, Express, React, Node.js) that performs CRUD (Create, Read, Update, Delete) operations. 
 
-[Watch the demo »]()
+[Watch the demo »]
+Src
+-assets
+--demo video
 
 ## Table of Contents
 
