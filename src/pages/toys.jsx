@@ -20,7 +20,7 @@ function PopularToys() {
         console.log(error);
         setError(error.message);
       });
-  }, []);
+  }, []); 
 
   const handleUpdateToy = (id, updatedToy) => {
     updateToyById(id, updatedToy)

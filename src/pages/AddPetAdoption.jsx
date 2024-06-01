@@ -9,7 +9,7 @@ function AddPetAdoption() {
   const [newAdopt, setNewAdopt] = useState({
     name: "",
     age: "",
-    breed: "",
+    breed: "", 
     description: "",
     image: "",
   });

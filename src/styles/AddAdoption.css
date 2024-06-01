@@ -1,6 +1,6 @@
 .form-styling{
     margin: 0 auto;
-    width: 50%;
+    width: 30%;
     height: 76vh;
     background-color: #F4F3F1;
     padding: 50px;
@@ -13,5 +13,6 @@
 }
 
 .submit-btn{
-    margin-left: 97px;
+    /* margin-left: 97px; */
+    margin-top: 20px;
 }
